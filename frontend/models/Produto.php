@@ -52,7 +52,7 @@ class Produto extends \yii\db\ActiveRecord
             'id' => 'ID',
             'descricao' => 'Descricao',
             'id_pessoa' => 'Id Pessoa',
-            'id_categoria' => 'Id Categoria',
+            'id_categoria' => 'Categoria',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];

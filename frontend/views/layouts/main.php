@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\bootstrap5\Modal;
 
 AppAsset::register($this);
 ?>
@@ -77,6 +78,20 @@ AppAsset::register($this);
         <p class="float-end"><?= Yii::powered() ?></p>
     </div>
 </footer>
+
+<?php
+
+    Modal::begin([
+        'title' => '',
+        'id' => 'modal',
+        'size' => 'modal-lg'
+    ]);
+
+    echo "<div id='modalContent'></div>";
+
+    Modal::end();
+
+?>
 
 <?php $this->endBody() ?>
 </body>

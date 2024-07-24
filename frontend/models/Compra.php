@@ -54,7 +54,7 @@ class Compra extends \yii\db\ActiveRecord
             'valor' => 'Valor',
             'descricao' => 'Descricao',
             'id_pessoa' => 'Id Pessoa',
-            'id_produto' => 'Id Produto',
+            'id_produto' => 'Produto',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
