@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use app\models\Produto;
 use frontend\models\ProdutoSearch;
 use yii\web\Controller;
@@ -70,8 +71,13 @@ class ProdutoController extends Controller
         $model = new Produto();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->id_pessoa = 1;
+
+                $status = $model->save();
+
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return ['success' => $status];
             }
         } else {
             $model->loadDefaultValues();

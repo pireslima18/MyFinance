@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+
+use Yii;
 use app\models\Categoria;
 use frontend\models\CategoriaSearch;
 use yii\web\Controller;
@@ -70,8 +72,11 @@ class CategoriaController extends Controller
         $model = new Categoria();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $status = $model->save(false);
+
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                return ['success' => $status];
             }
         } else {
             $model->loadDefaultValues();

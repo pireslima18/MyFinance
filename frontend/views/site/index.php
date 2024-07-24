@@ -9,7 +9,7 @@ $this->title = 'My Yii Application';
 
 $this->registerJs("
     $(document).ready(function(){
-        alert('aaaa')
+        
     });
 ", \yii\web\View::POS_END);
 

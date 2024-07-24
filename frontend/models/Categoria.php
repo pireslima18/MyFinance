@@ -40,6 +40,12 @@ class Categoria extends \yii\db\ActiveRecord
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        $this->id_pessoa = 1;
+	    return parent::beforeSave($insert);
+    }
+
     /**
      * {@inheritdoc}
      */
