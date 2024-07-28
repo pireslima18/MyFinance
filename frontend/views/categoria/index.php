@@ -18,7 +18,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Categoria', ['create'], ['class' => 'btn btn-success']) ?>
+    <?= 
+        Html::button('Criar Categoria', ['class' => 'btn btn-success', 'onclick' => '
+            $("#modal #modalContent").html("");
+            $("#modal").find("#modalContent").load("'.Url::toRoute(['categoria/create']).'");
+            $("#modal").find(".modal-title").html("Criar categoria");
+            $("#modal").modal("show");
+        ']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
