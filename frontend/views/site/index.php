@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 /** @var yii\web\View $this */
 
@@ -134,4 +134,4 @@ $this->registerJs("
         </div>
 
     </div>
-</div>
+</div> -->
