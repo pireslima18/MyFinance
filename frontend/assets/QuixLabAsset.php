@@ -16,13 +16,14 @@ class QuixLabAsset extends AssetBundle
         'css/quixlab/plugins/chartist/css/chartist.min.css',
         'css/quixlab/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css',
         'css/quixlab/plugins/pg-calendar/css/pignose.calendar.min.css',
+        'css/quixlab/font-awesome.min.css',
     ];
     public $js = [
         'js/quixlab/common.min.js',
         'js/quixlab/custom.min.js',
-        'js/quixlab/settings.min.js',
-        'js/quixlab/gleek.min.js',
-        'js/quixlab/styleSwitcher.min.js',
+        'js/quixlab/settings.js',
+        'js/quixlab/gleek.js',
+        'js/quixlab/styleSwitcher.js',
         'js/quixlab/circle-progress/circle-progress.min.js',
         'js/quixlab/d3v3/index.js',
         'js/quixlab/topojson/topojson.min.js',
@@ -32,10 +33,8 @@ class QuixLabAsset extends AssetBundle
         'js/quixlab/moment/moment.min.js',
         'js/quixlab/pg-calendar/pignose.calendar.min.js',
         'js/quixlab/chartist/chartist.min.js',
-        'js/quixlab/chartist-plugin-tooltips/chartist-plugin-tooltips.min.js',
+        'js/quixlab/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js',
         'js/quixlab/dashboard/dashboard-1.js',
-
-        
     ];
     public $depends = [
         'yii\web\YiiAsset',
