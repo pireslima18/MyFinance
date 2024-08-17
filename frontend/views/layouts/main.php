@@ -35,7 +35,7 @@ QuixLabAsset::register($this);
         </div>
     </div>
 
-<!-- <div id="main-wrapper"> -->
+<div id="main-wrapper">
 
     <div class="nav-header">
         <div class="brand-logo">
@@ -410,7 +410,7 @@ QuixLabAsset::register($this);
 
     ?>
 
-<!-- </div> -->
+</div>
 
 <?php $this->endBody() ?>
 </body>

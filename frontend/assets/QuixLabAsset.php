@@ -32,6 +32,7 @@ class QuixLabAsset extends AssetBundle
         'js/quixlab/morris/morris.min.js',
         'js/quixlab/moment/moment.min.js',
         'js/quixlab/pg-calendar/pignose.calendar.min.js',
+        'js/quixlab/chart/Chart.bundle.min.js',
         'js/quixlab/chartist/chartist.min.js',
         'js/quixlab/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js',
         'js/quixlab/dashboard/dashboard-1.js',
