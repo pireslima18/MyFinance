@@ -1,35 +1,53 @@
 <?php
 
 /** @var yii\web\View $this */
-/** @var yii\bootstrap5\ActiveForm $form */
-/** @var \frontend\models\SignupForm $model */
 
 use yii\bootstrap5\Html;
+use yii\helpers\Url;
 use yii\bootstrap5\ActiveForm;
 
-$this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Cadastro';
+
+$this->registerJs("
+    $(document).ready(function(){
+        
+    });
+", \yii\web\View::POS_END);
+
 ?>
-<div class="site-signup">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to signup:</p>
+<div style="margin-top: 20%;">
+    <div class="login-form-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card login-form mb-0">
+                            <div class="card-body pt-5">
+                                
+                                <a class="text-center" href="index.html"> <h4><?= Yii::$app->name ?></h4></a>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                                <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control border-0 border-bottom']) ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'email')->textInput( ['class' => 'form-control border-0 border-bottom']) ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control border-0 border-bottom']) ?>
+                                    </div>
+                                    <?= Html::submitButton('Cadastrar', ['class' => 'btn login-form__btn submit w-100', 'name' => 'signup-button']) ?>
+                                    <?php ActiveForm::end(); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
-
-                <?= $form->field($model, 'email') ?>
-
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
+                                    <p class="mt-5 login-form__footer">Já tem uma conta?  <?= Html::a('Entrar agora', Url::to(['site/login']), ['class' => 'text-primary']) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-            <?php ActiveForm::end(); ?>
+            </div>
         </div>
     </div>
 </div>

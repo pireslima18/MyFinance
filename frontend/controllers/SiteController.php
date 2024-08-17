@@ -156,6 +156,7 @@ class SiteController extends CoreController
      */
     public function actionSignup()
     {
+        $this->layout = 'secondary';
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');

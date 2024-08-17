@@ -24,7 +24,7 @@ $this->registerJs("
                     <div class="form-input-content">
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
-                                <a class="text-center" href="index.html"> <h4>MyFinance</h4></a>
+                                <a class="text-center" href="index.html"> <h4><?= Yii::$app->name ?></h4></a>
                                 <?php $form = ActiveForm::begin(['id' => 'login-form', 'class' => 'mt-5 mb-5 login-input']); ?>
                                     <div class="form-group">
                                         <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control border-0 border-bottom']) ?>
@@ -35,7 +35,9 @@ $this->registerJs("
                                     <?= Html::submitButton('Entrar', ['class' => 'btn login-form__btn submit w-100', 'name' => 'login-button']) ?>
                                 </form>
                                 <?php ActiveForm::end(); ?>
-                                <p class="mt-5 login-form__footer">Ainda não tem uma conta? <a href="page-register.html" class="text-primary">Criar agora</a></p>
+                                <p class="mt-5 login-form__footer">Ainda não tem uma conta?
+                                    <?= Html::a('Criar agora', Url::to(['site/signup']), ['class' => 'text-primary']) ?>
+                                </p>
                             </div>
                         </div>
                     </div>
