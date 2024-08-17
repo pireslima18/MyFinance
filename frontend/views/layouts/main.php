@@ -4,6 +4,7 @@
 /** @var string $content */
 
 use frontend\assets\QuixLabAsset;
+use yii\helpers\Url;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
@@ -218,7 +219,25 @@ QuixLabAsset::register($this);
                                     <li>
                                         <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
                                     </li>
-                                    <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    <li>
+                                        <?php
+                                            echo Html::a('<i class="icon-key"></i> <span>Logout</span>',
+                                            '#',
+                                            ['onclick' => "
+                                                $.ajax({
+                                                    url: '" . Url::toRoute('site/logout') . "',
+                                                    type:'post',
+                                                    dataType: 'json',
+                                                     data: {
+                                                        '" . Yii::$app->request->csrfParam . "': '" . Yii::$app->request->csrfToken . "'
+                                                    },
+                                                    success: function(data){
+                                                        location.reload();
+                                                    }
+                                                });
+                                            "]);
+                                        ?>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

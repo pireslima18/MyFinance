@@ -112,7 +112,8 @@ class SiteController extends CoreController
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['status' => true];
     }
 
     /**
