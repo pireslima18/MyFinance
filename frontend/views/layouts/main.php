@@ -12,6 +12,21 @@ use yii\bootstrap5\NavBar;
 use yii\bootstrap5\Modal;
 
 QuixLabAsset::register($this);
+
+$this->registerJs("
+
+(function($) {
+    'use strict'
+
+    new quixSettings({
+        sidebarPosition: 'fixed'
+    });
+    
+})(jQuery);
+
+", \yii\web\View::POS_END);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -36,7 +51,7 @@ QuixLabAsset::register($this);
         </div>
     </div>
 
-<div id="main-wrapper" style="height: 100%">
+<div id="main-wrapper">
 
     <div class="nav-header">
         <div class="brand-logo">
@@ -243,7 +258,12 @@ QuixLabAsset::register($this);
                 <li class="mega-menu mega-menu-sm">
                     <?= Html::a('<i class="fa fa-shopping-cart"></i><span class="nav-text">Compra</span>', URL::to(['compra/index'])) ?>
                 </li>
-                <li class="nav-label">Apps</li>
+                <li class="mega-menu mega-menu-sm">
+                    <?= Html::a('<i class="fa fa-shopping-cart"></i><span class="nav-text">Loja</span>', URL::to(['produto/index'])) ?>
+                </li>
+                <li class="mega-menu mega-menu-sm">
+                    <?= Html::a('<i class="fa fa-shopping-cart"></i><span class="nav-text">Categoria</span>', URL::to(['categoria/index'])) ?>
+                </li>
                 <li>
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="icon-envelope menu-icon"></i> <span class="nav-text">Email</span>
@@ -365,6 +385,7 @@ QuixLabAsset::register($this);
 
     <main role="main" class="flex-shrink-0">
         <div class="container">
+            
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>

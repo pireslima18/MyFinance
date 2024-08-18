@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string|null $descricao
- * @property int $id_pessoa
+ * @property int $id_user
  * @property string $created_at
  * @property string $updated_at
  *
@@ -32,17 +32,17 @@ class Categoria extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_pessoa'], 'required'],
-            [['id_pessoa'], 'integer'],
+            [['id_user'], 'required'],
+            [['id_user'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['descricao'], 'string', 'max' => 100],
-            [['id_pessoa'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_pessoa' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_user' => 'id']],
         ];
     }
 
     public function beforeSave($insert)
     {
-        $this->id_pessoa = 1;
+        $this->id_user = Yii::$app->user->identity->ID;
 	    return parent::beforeSave($insert);
     }
 
@@ -54,7 +54,7 @@ class Categoria extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'descricao' => 'Descricao',
-            'id_pessoa' => 'Id Pessoa',
+            'id_user' => 'Id Pessoa',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -67,7 +67,7 @@ class Categoria extends \yii\db\ActiveRecord
      */
     public function getPessoa()
     {
-        return $this->hasOne(CadPessoa::class, ['id' => 'id_pessoa']);
+        return $this->hasOne(CadPessoa::class, ['id' => 'id_user']);
     }
 
     /**

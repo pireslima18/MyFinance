@@ -10,8 +10,8 @@ use yii\grid\GridView;
 /** @var frontend\models\CategoriaSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Categorias';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->title = 'Categorias';
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-index">
 
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
     <?= 
-        Html::button('Criar Categoria', ['class' => 'btn btn-success', 'onclick' => '
+        Html::button('Criar Categoria', ['class' => 'btn btn-primary fw-bolder', 'onclick' => '
             $("#modal #modalContent").html("");
             $("#modal").find("#modalContent").load("'.Url::toRoute(['categoria/create']).'");
             $("#modal").find(".modal-title").html("Criar categoria");
@@ -31,15 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'descricao',
-            'id_pessoa',
-            'created_at',
-            'updated_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Categoria $model, $key, $index, $column) {

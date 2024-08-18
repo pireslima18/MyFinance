@@ -3,20 +3,21 @@
 namespace app\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "produto".
  *
  * @property int $id
  * @property string|null $descricao
- * @property int $id_pessoa
+ * @property int $id_user
  * @property int $id_categoria
  * @property string $created_at
  * @property string $updated_at
  *
  * @property Categoria $categoria
  * @property Compra[] $compras
- * @property CadPessoa $pessoa
+ * @property User $user
  */
 class Produto extends \yii\db\ActiveRecord
 {
@@ -34,13 +35,19 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_pessoa', 'id_categoria'], 'required'],
-            [['id_pessoa', 'id_categoria'], 'integer'],
+            [['id_user', 'id_categoria'], 'required'],
+            [['id_user', 'id_categoria'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['descricao'], 'string', 'max' => 100],
             [['id_categoria'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['id_categoria' => 'id']],
-            [['id_pessoa'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_pessoa' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        
+	    return parent::beforeSave($insert);
     }
 
     /**
@@ -51,7 +58,7 @@ class Produto extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'descricao' => 'Descricao',
-            'id_pessoa' => 'Id Pessoa',
+            'id_user' => 'Usuario',
             'id_categoria' => 'Categoria',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -85,6 +92,6 @@ class Produto extends \yii\db\ActiveRecord
      */
     public function getPessoa()
     {
-        return $this->hasOne(CadPessoa::class, ['id' => 'id_pessoa']);
+        return $this->hasOne(CadPessoa::class, ['id' => 'id_user']);
     }
 }

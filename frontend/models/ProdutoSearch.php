@@ -17,7 +17,7 @@ class ProdutoSearch extends Produto
     public function rules()
     {
         return [
-            [['id', 'id_pessoa', 'id_categoria'], 'integer'],
+            [['id', 'id_user', 'id_categoria'], 'integer'],
             [['descricao', 'created_at', 'updated_at'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class ProdutoSearch extends Produto
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_pessoa' => $this->id_pessoa,
+            'id_user' => $this->id_user,
             'id_categoria' => $this->id_categoria,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -72,8 +72,8 @@ class ProdutoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->id_pessoa = 1;
 
+                $model->id_user = Yii::$app->user->identity->ID;
                 $status = $model->save();
 
                 Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

@@ -10,15 +10,15 @@ use yii\grid\GridView;
 /** @var frontend\models\ProdutoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Produtos';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->title = 'Produtos';
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="produto-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::button('Criar Produto', ['class' => 'btn btn-success', 'onclick' => '
+        <?= Html::button('Criar Produto', ['class' => 'btn btn-primary text-white fw-bolder', 'onclick' => '
             $("#modal #modalContent").html("");
             $("#modal").find("#modalContent").load("'.Url::toRoute(['produto/create']).'");
             $("#modal").find(".modal-title").html("Criar produto");
@@ -30,16 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'descricao',
-            'id_pessoa',
-            'id_categoria',
-            'created_at',
-            //'updated_at',
+            [
+                'attribute' => 'id_categoria',
+                'value' => 'categoria.descricao'
+            ],
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Produto $model, $key, $index, $column) {

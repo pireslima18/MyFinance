@@ -70,7 +70,7 @@ class CadPessoa extends \yii\db\ActiveRecord
      */
     public function getCategorias()
     {
-        return $this->hasMany(Categoria::class, ['id_pessoa' => 'id']);
+        return $this->hasMany(Categoria::class, ['id_user' => 'id']);
     }
 
     /**
@@ -80,7 +80,7 @@ class CadPessoa extends \yii\db\ActiveRecord
      */
     public function getCompras()
     {
-        return $this->hasMany(Compra::class, ['id_pessoa' => 'id']);
+        return $this->hasMany(Compra::class, ['id_user' => 'id']);
     }
 
     /**
@@ -90,7 +90,7 @@ class CadPessoa extends \yii\db\ActiveRecord
      */
     public function getProdutos()
     {
-        return $this->hasMany(Produto::class, ['id_pessoa' => 'id']);
+        return $this->hasMany(Produto::class, ['id_user' => 'id']);
     }
 
     /**
@@ -100,6 +100,6 @@ class CadPessoa extends \yii\db\ActiveRecord
      */
     public function getRendas()
     {
-        return $this->hasMany(Renda::class, ['id_pessoa' => 'id']);
+        return $this->hasMany(Renda::class, ['id_user' => 'id']);
     }
 }

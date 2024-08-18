@@ -17,7 +17,7 @@ class RendaSearch extends Renda
     public function rules()
     {
         return [
-            [['id', 'id_pessoa'], 'integer'],
+            [['id', 'id_user'], 'integer'],
             [['valor'], 'number'],
             [['descricao', 'created_at', 'updated_at'], 'safe'],
         ];
@@ -61,7 +61,7 @@ class RendaSearch extends Renda
         $query->andFilterWhere([
             'id' => $this->id,
             'valor' => $this->valor,
-            'id_pessoa' => $this->id_pessoa,
+            'id_user' => $this->id_user,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
