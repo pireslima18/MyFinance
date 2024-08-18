@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property float $valor
  * @property string|null $descricao
- * @property int $id_pessoa
+ * @property int $id_user
  * @property int $id_produto
  * @property string $created_at
  * @property string $updated_at
@@ -34,12 +34,12 @@ class Compra extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['valor', 'id_pessoa', 'id_produto'], 'required'],
+            [['valor', 'id_user', 'id_produto'], 'required'],
             [['valor'], 'number'],
-            [['id_pessoa', 'id_produto'], 'integer'],
+            [['id_user', 'id_produto'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['descricao'], 'string', 'max' => 300],
-            [['id_pessoa'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_pessoa' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_user' => 'id']],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produto::class, 'targetAttribute' => ['id_produto' => 'id']],
         ];
     }
@@ -53,7 +53,7 @@ class Compra extends \yii\db\ActiveRecord
             'id' => 'ID',
             'valor' => 'Valor',
             'descricao' => 'Descricao',
-            'id_pessoa' => 'Id Pessoa',
+            'id_user' => 'Id Pessoa',
             'id_produto' => 'Produto',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -67,7 +67,7 @@ class Compra extends \yii\db\ActiveRecord
      */
     public function getPessoa()
     {
-        return $this->hasOne(CadPessoa::class, ['id' => 'id_pessoa']);
+        return $this->hasOne(CadPessoa::class, ['id' => 'id_user']);
     }
 
     /**

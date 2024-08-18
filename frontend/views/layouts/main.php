@@ -36,7 +36,7 @@ QuixLabAsset::register($this);
         </div>
     </div>
 
-<div id="main-wrapper">
+<div id="main-wrapper" style="height: 100%">
 
     <div class="nav-header">
         <div class="brand-logo">
@@ -56,19 +56,6 @@ QuixLabAsset::register($this);
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="toggle-icon"><i class="icon-menu"></i></span>
-                </div>
-            </div>
-            <div class="header-left">
-                <div class="input-group icons">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
-                    </div>
-                    <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                    <div class="drop-down animated flipInX d-md-none">
-                        <form action="#">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </form>
-                    </div>
                 </div>
             </div>
             <div class="header-right">
@@ -249,35 +236,12 @@ QuixLabAsset::register($this);
 
     <div class="nk-sidebar">           
         <div class="nk-nav-scroll">
-            <ul class="metismenu" id="menu">
-                <li class="nav-label">Dashboard</li>
+            <ul class="metismenu" id="menu" aria-expanded="false">
                 <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="./index.html">Home 1</a></li>
-                        <!-- <li><a href="./index-2.html">Home 2</a></li> -->
-                    </ul>
-                </li>
+                    <?= Html::a('<i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>', URL::to(['site/index'])) ?>
+                    </li>
                 <li class="mega-menu mega-menu-sm">
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="./layout-blank.html">Blank</a></li>
-                        <li><a href="./layout-one-column.html">One Column</a></li>
-                        <li><a href="./layout-two-column.html">Two column</a></li>
-                        <li><a href="./layout-compact-nav.html">Compact Nav</a></li>
-                        <li><a href="./layout-vertical.html">Vertical</a></li>
-                        <li><a href="./layout-horizontal.html">Horizontal</a></li>
-                        <li><a href="./layout-boxed.html">Boxed</a></li>
-                        <li><a href="./layout-wide.html">Wide</a></li>
-                        
-                        
-                        <li><a href="./layout-fixed-header.html">Fixed Header</a></li>
-                        <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>
-                    </ul>
+                    <?= Html::a('<i class="fa fa-shopping-cart"></i><span class="nav-text">Compra</span>', URL::to(['compra/index'])) ?>
                 </li>
                 <li class="nav-label">Apps</li>
                 <li>
@@ -407,13 +371,6 @@ QuixLabAsset::register($this);
             <?= $content ?>
         </div>
     </main>
-
-    <footer class="footer mt-auto py-3 text-muted">
-        <div class="container">
-            <p class="float-start">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-            <p class="float-end"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
 
     <?php
 

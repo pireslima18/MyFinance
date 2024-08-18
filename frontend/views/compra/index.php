@@ -11,9 +11,9 @@ use yii\grid\GridView;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Compras';
-$this->params['breadcrumbs'][] = $this->title;
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="compra-index">
+<div class="compra-index mt-5">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'valor',
             'descricao',
-            'id_pessoa',
+            'id_user',
             'id_produto',
             //'created_at',
             //'updated_at',

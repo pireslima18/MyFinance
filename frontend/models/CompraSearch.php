@@ -17,7 +17,7 @@ class CompraSearch extends Compra
     public function rules()
     {
         return [
-            [['id', 'id_pessoa', 'id_produto'], 'integer'],
+            [['id', 'id_user', 'id_produto'], 'integer'],
             [['valor'], 'number'],
             [['descricao', 'created_at', 'updated_at'], 'safe'],
         ];
@@ -61,7 +61,7 @@ class CompraSearch extends Compra
         $query->andFilterWhere([
             'id' => $this->id,
             'valor' => $this->valor,
-            'id_pessoa' => $this->id_pessoa,
+            'id_user' => $this->id_user,
             'id_produto' => $this->id_produto,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
