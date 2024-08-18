@@ -12,16 +12,16 @@ class m240723_222929_CADPESSOA extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%cad_pessoa}}', [
-            'id' => $this->primaryKey(),
-            'nome' => $this->string()->notNull(),
-            'senha' => $this->string(32)->notNull(),
-            'telefone' => $this->string(),
-            'email' => $this->string()->notNull()->unique(),
-            'id_perfil' => $this->integer(),
-            'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
-            'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
-        ]);
+        // $this->createTable('{{%cad_pessoa}}', [
+        //     'id' => $this->primaryKey(),
+        //     'nome' => $this->string()->notNull(),
+        //     'senha' => $this->string(32)->notNull(),
+        //     'telefone' => $this->string(),
+        //     'email' => $this->string()->notNull()->unique(),
+        //     'id_perfil' => $this->integer(),
+        //     'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+        //     'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
+        // ]);
     }
 
     /**
@@ -29,7 +29,7 @@ class m240723_222929_CADPESSOA extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%cad_pessoa}}');
+        // $this->dropTable('{{%cad_pessoa}}');
     }
 
     /*

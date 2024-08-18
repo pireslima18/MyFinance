@@ -15,16 +15,16 @@ class m240723_223233_CATEGORIA extends Migration
         $this->createTable('{{%categoria}}', [
             'id' => $this->primaryKey(),
             'descricao' => $this->string(100),
-            'id_pessoa' => $this->integer()->notnull(),
+            'id_user' => $this->integer()->notnull(),
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         $this->addForeignKey(
-            'fk-categoria-id_pessoa',
+            'fk-categoria-id_user',
             'categoria',
-            'id_pessoa',
-            'cad_pessoa',
+            'id_user',
+            'user',
             'id'
         );
     }
@@ -35,25 +35,10 @@ class m240723_223233_CATEGORIA extends Migration
     public function safeDown()
     {
         $this->dropForeignKey(
-            'fk-categoria-id_pessoa',
+            'fk-categoria-id_user',
             'categoria'
         );
 
         $this->dropTable('categoria');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m240723_223233_CATEGORIA cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

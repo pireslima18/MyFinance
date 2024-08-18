@@ -16,16 +16,16 @@ class m240723_223125_RENDA extends Migration
             'id' => $this->primaryKey(),
             'valor' => $this->float(),
             'descricao' => $this->string(100),
-            'id_pessoa' => $this->integer()->notnull(),
+            'id_user' => $this->integer()->notnull(),
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         $this->addForeignKey(
-            'fk-renda-id_pessoa',
+            'fk-renda-id_user',
             'renda',
-            'id_pessoa',
-            'cad_pessoa',
+            'id_user',
+            'user',
             'id'
         );
     }
@@ -36,25 +36,10 @@ class m240723_223125_RENDA extends Migration
     public function safeDown()
     {
         $this->dropForeignKey(
-            'fk-renda-id_pessoa',
+            'fk-renda-id_user',
             'renda'
         );
 
         $this->dropTable('renda');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m240723_223125_RENDA cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

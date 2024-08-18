@@ -15,17 +15,17 @@ class m240723_223354_PRODUTO extends Migration
         $this->createTable('{{%produto}}', [
             'id' => $this->primaryKey(),
             'descricao' => $this->string(100),
-            'id_pessoa' => $this->integer()->notnull(),
+            'id_user' => $this->integer()->notnull(),
             'id_categoria' => $this->integer()->notnull(),
             'created_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
             'updated_at' => $this->dateTime()->notNull()->defaultExpression('CURRENT_TIMESTAMP'),
         ]);
 
         $this->addForeignKey(
-            'fk-produto-id_pessoa',
+            'fk-produto-id_user',
             'produto',
-            'id_pessoa',
-            'cad_pessoa',
+            'id_user',
+            'user',
             'id'
         );
 
@@ -47,22 +47,11 @@ class m240723_223354_PRODUTO extends Migration
             'fk-produto-id_categoria',
             'produto'
         );
+        $this->dropForeignKey(
+            'fk-produto-id_user',
+            'produto'
+        );
 
         $this->dropTable('produto');
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m240723_223354_PRODUTO cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

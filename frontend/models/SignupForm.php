@@ -77,4 +77,12 @@ class SignupForm extends Model
             ->setSubject('Account registration at ' . Yii::$app->name)
             ->send();
     }
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Nome',
+            'password' => 'Senha',
+        ];
+    }
 }
