@@ -9024,7 +9024,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   flex: 0 0 100%; }
 
 [data-sidebar-position="fixed"][data-layout="vertical"] .nav-header {
-  position: fixed;
+  /* Estilo Personalizado */
+  /* position: fixed; */
   left: auto;
   z-index: 9; }
 
@@ -14703,6 +14704,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 
 /* Estilo Personalizado */
+/* Para Pesquisar por estilos modificados, pesquisar por "Estilo Personalizado" */
 
 .btn-circle{
   border-radius: 15px;
