@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "compra".
@@ -15,7 +16,7 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  *
- * @property CadPessoa $pessoa
+ * @property User $user
  * @property Produto $produto
  */
 class Compra extends \yii\db\ActiveRecord
@@ -37,11 +38,22 @@ class Compra extends \yii\db\ActiveRecord
             [['valor', 'id_user', 'id_produto'], 'required'],
             [['valor'], 'number'],
             [['id_user', 'id_produto'], 'integer'],
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'DataCompra'], 'safe'],
             [['descricao'], 'string', 'max' => 300],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => CadPessoa::class, 'targetAttribute' => ['id_user' => 'id']],
+            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['id_user' => 'id']],
             [['id_produto'], 'exist', 'skipOnError' => true, 'targetClass' => Produto::class, 'targetAttribute' => ['id_produto' => 'id']],
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+	    return parent::beforeSave($insert);
+    }
+
+    public function afterFind() {
+        if (!empty($this->DataCompra)) {
+            $this->DataCompra = Yii::$app->formatter->asDate($this->DataCompra, 'php:d/m/Y');
+        }
     }
 
     /**
@@ -53,8 +65,9 @@ class Compra extends \yii\db\ActiveRecord
             'id' => 'ID',
             'valor' => 'Valor',
             'descricao' => 'Descricao',
-            'id_user' => 'Id Pessoa',
-            'id_produto' => 'Produto',
+            'id_user' => 'Id User',
+            'id_produto' => 'Loja',
+            'DataCompra' => 'Data da Compra',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -65,9 +78,9 @@ class Compra extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPessoa()
+    public function getUser()
     {
-        return $this->hasOne(CadPessoa::class, ['id' => 'id_user']);
+        return $this->hasOne(User::class, ['id' => 'id_user']);
     }
 
     /**

@@ -7,6 +7,7 @@ use frontend\models\CompraSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * CompraController implements the CRUD actions for Compra model.
@@ -70,8 +71,14 @@ class CompraController extends Controller
         $model = new Compra();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+                $model->id_user = Yii::$app->user->identity->ID;
+                $status = $model->save();
+
+                print_r($model->getErrors());
+                return ['status' => $status, 'error' => ''];
             }
         } else {
             $model->loadDefaultValues();
