@@ -1,10 +1,11 @@
 <?php
 
-use app\models\Produto;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use app\models\Produto;
+use kartik\date\DatePicker;
 use kartik\money\MaskMoney;
 use kartik\select2\Select2;
+use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
@@ -64,9 +65,30 @@ $this->registerJs("
         'showToggleAll' => false,
     ]);  ?>
 
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-8 col-lg-5" style="margin: auto;">
+            <?php
+                echo '<div class="well border border-secondary rounded p-1" >';
+                echo DatePicker::widget([
+                    'name' => 'dp_5',
+                    'type' => DatePicker::TYPE_INLINE,
+                    'value' => $model->DataCompra == 'CURRENT_TIMESTAMP' ? '' : $model->DataCompra,
+                    'type' => DatePicker::TYPE_INLINE,
+                    'pluginOptions' => [
+                        'format' => 'dd/mm/yyyy',
+                        'multidate' => false
+                    ],
+                    'options' => [
+                    ]
+                ]);
+                echo '</div>';
+            ?>
+        </div>
+    </div>
+
 
     <div class="form-group">
-        <?= Html::submitButton('Registrar', ['class' => 'btn btn-primary mt-3']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Registrar' : 'Salvar', ['class' => 'btn btn-primary mt-3']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

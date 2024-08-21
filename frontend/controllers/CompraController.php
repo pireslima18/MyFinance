@@ -56,7 +56,7 @@ class CompraController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
+        return $this->renderAjax('_form', [
             'model' => $this->findModel($id),
         ]);
     }

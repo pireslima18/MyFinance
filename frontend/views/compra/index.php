@@ -14,6 +14,20 @@ use kartik\money\MaskMoney;
 
 $this->title = 'Compras';
 // $this->params['breadcrumbs'][] = $this->title;
+
+$this->registerJs("
+    $(document).ready(function(){
+        $('#ButtonView').click(function(e){
+            e.preventDefault();
+
+            $('#modal #modalContent').html('');
+            $('#modal').find('#modalContent').load(this.href);
+            $('#modal').find('.modal-title').html('Compra');
+            $('#modal').modal('show');
+        });
+    });
+", \yii\web\View::POS_END);
+
 ?>
 <div class="compra-index mt-5">
 
@@ -60,14 +74,14 @@ $this->title = 'Compras';
                 'buttons' => [
                   'visualizar' => function ($url, $model, $key) {
                     return '
-                    <a class="btn btn-primary btn-circle" data-toggle="tooltip" data-pjax="0" title="Visualizar" href=\''.Url::to(['/brl-dispositivo-aparelho/view','id'=>$model->id]).'\'>
+                    <a class="btn-primary btn-circle text-center mr-2" id="ButtonView" data-toggle="tooltip" data-pjax="0" title="Visualizar" href=\''.Url::to(['compra/view','id'=>$model->id]).'\'>
                     <i class="fa fa-eye"></i>
                     </a>
                     ';
                   },
                   'editar' => function ($url, $model, $key) {
                     return '
-                    <a class="" data-toggle="tooltip" data-pjax="0" title="Editar" href=\''.Url::to(['/brl-dispositivo-aparelho/update','id'=>$model->id]).'\'>
+                    <a class="btn-success btn-circle text-center" id="ButtonEdit" data-toggle="tooltip" data-pjax="0" title="Editar" href= "'.Url::to(['compra/update','id'=>$model->id]).'">
                     <i class="fa fa-pencil"></i>
                     </a>
                     ';

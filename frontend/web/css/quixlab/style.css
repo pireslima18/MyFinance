@@ -14700,3 +14700,13 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* Estilo Personalizado */
+
+.btn-circle{
+  border-radius: 15px;
+  padding: 6px 5px 6px 8px;
+}
+
+/* Fim Estilo Personalizado */
