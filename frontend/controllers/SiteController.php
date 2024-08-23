@@ -15,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use app\models\Compra;
 
 /**
  * Site controller
@@ -75,7 +76,10 @@ class SiteController extends CoreController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // $model = Compra::find()->where(['id_user' => Yii::$app->user->identity->ID]);
+        $model = new Compra;
+        $model->getTotalValor();
+        return $this->render('index', ['model' => $model]);
     }
 
     /**

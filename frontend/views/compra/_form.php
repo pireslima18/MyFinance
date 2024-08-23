@@ -73,7 +73,7 @@ $this->registerJs("
                 echo DatePicker::widget([
                     'name' => 'dp_5',
                     'type' => DatePicker::TYPE_INLINE,
-                    'value' => $model->DataCompra == 'CURRENT_TIMESTAMP' ? '' : $model->DataCompra,
+                    'value' => $model->DataCompra == 'CURRENT_TIMESTAMP' ? date('d/m/Y') : $model->DataCompra,
                     'type' => DatePicker::TYPE_INLINE,
                     'pluginOptions' => [
                         'format' => 'dd/mm/yyyy',

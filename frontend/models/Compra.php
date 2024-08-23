@@ -21,6 +21,10 @@ use common\models\User;
  */
 class Compra extends \yii\db\ActiveRecord
 {
+
+    public $TotalCompraValor;
+    public $TotalCompra;
+
     /**
      * {@inheritdoc}
      */
@@ -92,4 +96,13 @@ class Compra extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Produto::class, ['id' => 'id_produto']);
     }
+
+    public function getTotalValor(){
+        // $this->TotalCompraValo;
+        $model = $this::find()->select(['COUNT(*) as total_count', 'SUM(valor) as total_valor'])->where(['id_user' => Yii::$app->user->identity->ID])->asArray()->one();
+        $this->TotalCompra = $model['total_count'];
+        $this->TotalCompraValor = Yii::$app->formatter->asDecimal($model['total_valor'], 2);
+        // return ;
+    }
+
 }
