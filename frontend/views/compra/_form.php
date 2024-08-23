@@ -24,15 +24,16 @@ $this->registerJs("
                 url: action_url,
                 data: form_data,
                 method: 'POST',
-                success: function(resp){
-                    if (resp.success == 1) {
+                success: function(data){
+                    if (data.status == 1) {
                         swal({
                             title: 'Sucesso',
                             text: 'Compra cadastrado com sucesso',
                             icon: 'success',
-                            timer: 7000,
+                            timer: 3000,
                             allowOutsideClick: true,
                         });
+                        $('#modal').modal('hide');
                         $.pjax.reload({container:'#id-pjax-compra',async:false});
                     } else {
                         swal({

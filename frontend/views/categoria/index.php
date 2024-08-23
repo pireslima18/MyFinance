@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /** @var yii\web\View $this */
 /** @var frontend\models\CategoriaSearch $searchModel */
@@ -29,6 +30,7 @@ use yii\grid\GridView;
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php Pjax::begin(['id' => 'id-pjax-categoria', 'timeout' => false, 'enablePushState' => false]); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         // 'filterModel' => $searchModel,
@@ -43,6 +45,7 @@ use yii\grid\GridView;
             ],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 
 
 </div>

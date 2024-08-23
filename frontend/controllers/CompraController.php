@@ -77,7 +77,6 @@ class CompraController extends Controller
                 $model->id_user = Yii::$app->user->identity->ID;
                 $status = $model->save();
 
-                print_r($model->getErrors());
                 return ['status' => $status, 'error' => ''];
             }
         } else {

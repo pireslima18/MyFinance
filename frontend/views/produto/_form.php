@@ -29,9 +29,11 @@ $this->registerJs("
                             title: 'Sucesso',
                             text: 'Produto cadastrado com sucesso',
                             icon: 'success',
-                            timer: 7000,
+                            timer: 3000,
                             allowOutsideClick: true,
                         });
+                        $('#modal').modal('hide');
+                        $.pjax.reload({container:'#id-pjax-produto',async:false});
                     } else {
                         swal({
                             title: 'Erro',

@@ -26,9 +26,11 @@ $this->registerJs("
                             title: 'Sucesso',
                             text: 'Categoria cadastrado com sucesso',
                             icon: 'success',
-                            timer: 7000,
+                            timer: 3000,
                             allowOutsideClick: true,
                         });
+                        $('#modal').modal('hide');
+                        $.pjax.reload({container:'#id-pjax-categoria',async:false});
                     } else {
                         swal({
                             title: 'Erro',
