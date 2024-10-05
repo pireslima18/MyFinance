@@ -36,6 +36,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '',  // Valor exibido para NULL
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
